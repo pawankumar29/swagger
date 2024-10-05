@@ -1,0 +1,257 @@
+{
+    "definition":{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Hello World API",
+      "version": "1.0.0",
+      "description": "API for demonstrating basic operations"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:3000"
+      }
+    ],
+    "paths": {
+      "/": {
+        "get": {
+          "summary": "Returns a success message",
+          "description": "This API endpoint returns a status message and status code.",
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "integer",
+                        "description": "Status code of the response",
+                        "example": 1
+                      },
+                      "message": {
+                        "type": "string",
+                        "description": "A message indicating the success of the operation",
+                        "example": "done Successfully"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/data": {
+        "post": {
+          "summary": "Post data",
+          "description": "This endpoint accepts data in the request body and returns it.",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "string",
+                      "description": "The data to be posted",
+                      "example": "Sample data"
+                    }
+                  },
+                  "required": ["data"]
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "integer",
+                        "description": "Status code of the response",
+                        "example": 1
+                      },
+                      "data": {
+                        "type": "string",
+                        "description": "The data that was posted",
+                        "example": "Sample data"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid data"
+            }
+          }
+        }
+      },
+      "/update/{id}": {
+        "put": {
+          "summary": "Update data by ID",
+          "description": "This endpoint updates data based on the provided ID.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "query",
+              "required": true,
+              "description": "The ID of the data to be updated",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful update response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "integer",
+                        "description": "Status code of the response",
+                        "example": 1
+                      },
+                      "id": {
+                        "type": "string",
+                        "description": "The ID of the updated data",
+                        "example": "123"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid ID"
+            }
+          }
+        }
+      },
+      "/delete/{id}": {
+        "put": {
+          "summary": "Delete data by ID",
+          "description": "This endpoint deletes data based on the provided ID.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "description": "The ID of the data to be deleted",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful delete response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "integer",
+                        "description": "Status code of the response",
+                        "example": 1
+                      },
+                      "id": {
+                        "type": "string",
+                        "description": "The ID of the deleted data",
+                        "example": "123"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid ID"
+            }
+          }
+        }
+      },
+      "/check1": {
+        "get": {
+          "summary": "Post data",
+          "description": "This endpoint accepts data in the request body and returns it.",
+        
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "integer",
+                        "description": "Status code of the response",
+                        "example": 1
+                      },
+                      "data": {
+                        "type": "string",
+                        "description": "The data that was printed",
+                        "example": "inside"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid data"
+            }
+          }
+        }
+      },
+      "/check2": {
+        "post": {
+          "summary": "Post data",
+          "description": "This endpoint accepts data in the request body and returns it.",
+       
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "integer",
+                        "description": "Status code of the response",
+                        "example": 1
+                      },
+                      "data": {
+                        "type": "string",
+                        "description": "The data that was posted",
+                        "example": "Sample data"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid data"
+            }
+          }
+        }
+      }
+    }
+  },
+  "apis":["./test.js"]
+
+}
+  
