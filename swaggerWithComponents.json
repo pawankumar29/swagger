@@ -1,0 +1,110 @@
+{
+  "definition": {
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Hello World",
+      "version": "1.0.0",
+      "description": "A message indicating the success of the operation"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:3000"
+      }
+    ],
+    "paths": {
+      "/": {
+        "get": {
+          "summary": "Returns a success message",
+          "description": "This API endpoint returns a status message and status code.",
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SuccessResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/data": {
+        "post": {
+          "summary": "Post data",
+          "description": "This endpoint accepts data in the request body and returns it.",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/DataResponse"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid data"
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "SuccessResponse": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "integer",
+              "description": "Status code of the response",
+              "example": 1
+            },
+            "message": {
+              "type": "string",
+              "description": "A message indicating the success of the operation",
+              "example": "done Successfully"
+            }
+          }
+        },
+        "DataRequest": {
+          "type": "object",
+          "properties": {
+            "data": {
+              "type": "string",
+              "description": "The data to be posted",
+              "example": "Sample data"
+            }
+          }
+        },
+        "DataResponse": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "integer",
+              "description": "Status code of the response",
+              "example": 1
+            },
+            "data": {
+              "type": "string",
+              "description": "The data that was posted",
+              "example": "Sample data"
+            }
+          }
+        }
+      }
+    }
+  },
+  "apis": ["./test.js"]
+}
